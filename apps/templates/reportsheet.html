@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>welcome</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/index.css"/>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="jquery.mlens-1.0.min.js"></script>
+        
+        <!--页面样式定义-->
+        <style>
+            body
+            {
+                font-family : Arial;
+                background-color : #fff;
+            }
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <!--输入框定义-->
+        <form id="form" action="" method="post">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            day  <input type="radio" id = "day" name="search" value="day" checked/>
+            week  <input type="radio" id = "week" name="search" value="week" />
+            month <input type="radio" id = "month" name="search" value="month"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="start" value="search">
+        </form>
+    
+        <hr /><br />
+        
+        <!--报表结构定义-->
+        <table class="table" border="0" cellpadding="5" cellspacing="20">
+            <thead>
+                <tr>
+                    <th>room_id</th>
+                    <th>total cost</th>
+                    <th>turn on/off</th>
+                </tr>
+            </thead>
+             <tbody>
+             {% for client_request in report %}
+             <tr>
+             <td>{{ client_request[0] }}</td>
+             <td>{{ client_request[1] }}</td>
+             <td>{{ client_request[2] }}</td>
+             </tr>
+             {% endfor %}
+             </tbody>
+        </table>
+        
+        <hr />
+        
+        <table  class="table" border="0" cellpadding="5" cellspacing="20">
+            <thead>
+                <tr>
+                    <th>room_id</th>
+                    <th>cost</th>
+                    <th>temp</th>
+                    <th>state</th>
+                    <th>power</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+            
+             <tbody>
+                 {% for client_request in room_requestss %}
+                 <tr>
+                     <td>{{client_request.room_id }}</td>
+                     <td>{{client_request.room_cost }}</td>
+                     <td>{{client_request.room_temp }}</td>
+                     <td>{{ client_request.room_state }}</td>
+                     <td>{{client_request.room_power }}</td>
+                     <td>{{client_request.room_date }}</td>
+                 </tr>
+                 {% endfor %}
+             </tbody>
+             
+        </table>
+    </body>
+</html>
+
